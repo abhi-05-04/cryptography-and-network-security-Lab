@@ -14,6 +14,18 @@ long long int power(long long int a, long long int b,
 	else
 		return (((long long int)pow(a, b)) % P);
 }
+int prime(long int pr)
+{
+	if (pr <= 1)  return 0;
+    int i;
+    int j = sqrt(pr);
+    for (i = 2; i <= j; i++)
+    {
+        if (pr % i == 0)
+            return 0;
+    }
+    return 1;
+}
 
 // Driver program
 int main()
@@ -23,9 +35,18 @@ int main()
 	// Both the persons will be agreed upon the
 	// public keys G and P
 	P = 23; // A prime number P is taken
-	cout<<"Enter the Prime Number: ";
-	cin>>P;
+	while (1)
+	{
+		cout<<"Enter the Prime Number: ";
+		cin>>P;
+		int t = prime(P);
+		if(t == 0)
+			cout<<"P is not Prime";
+		else
+			break;
+	}
 	
+
 	G = 9; // A primitive root for P, G is taken'
 	cout<<"Enter the Primitive Root: ";
 	cin>>G;
